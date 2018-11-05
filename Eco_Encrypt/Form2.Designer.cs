@@ -35,8 +35,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.TxbCredencial = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -87,23 +86,7 @@
             resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
-            // 
-            // shapeContainer1
-            // 
-            resources.ApplyResources(this.shapeContainer1, "shapeContainer1");
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.rectangleShape1});
-            this.shapeContainer1.TabStop = false;
-            // 
-            // rectangleShape1
-            // 
-            this.rectangleShape1.BackColor = System.Drawing.Color.YellowGreen;
-            resources.ApplyResources(this.rectangleShape1, "rectangleShape1");
-            this.rectangleShape1.Name = "rectangleShape1";
-            // 
-            // frm_ConfirmaDecrypt
-            // 
+            
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -113,7 +96,7 @@
             this.Controls.Add(this.btEntrar);
             this.Controls.Add(this.TxbData);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.shapeContainer1);
+            //this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frm_ConfirmaDecrypt";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -131,7 +114,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox TxbCredencial;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
+        //private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
+        //private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
     }
 }

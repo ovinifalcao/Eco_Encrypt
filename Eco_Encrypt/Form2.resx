@@ -506,34 +506,7 @@
   <data name="rectangleShape1.FillColor" type="System.Drawing.Color, System.Drawing">
     <value>YellowGreen</value>
   </data>
-  <assembly alias="Microsoft.VisualBasic.PowerPacks.Vs" name="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="rectangleShape1.FillStyle" type="Microsoft.VisualBasic.PowerPacks.FillStyle, Microsoft.VisualBasic.PowerPacks.Vs">
-    <value>Solid</value>
-  </data>
-  <data name="rectangleShape1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-4, 191</value>
-  </data>
-  <data name="rectangleShape1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>277, 82</value>
-  </data>
-  <data name="shapeContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 267</value>
-  </data>
-  <data name="shapeContainer1.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;shapeContainer1.Name" xml:space="preserve">
-    <value>shapeContainer1</value>
-  </data>
-  <data name="&gt;&gt;shapeContainer1.Type" xml:space="preserve">
-    <value>Microsoft.VisualBasic.PowerPacks.ShapeContainer, Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="&gt;&gt;shapeContainer1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;shapeContainer1.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
+
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
