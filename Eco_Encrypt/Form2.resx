@@ -494,19 +494,6 @@
   <data name="&gt;&gt;pictureBox2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="shapeContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="shapeContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="rectangleShape1.BorderColor" type="System.Drawing.Color, System.Drawing">
-    <value>YellowGreen</value>
-  </data>
-  <data name="rectangleShape1.FillColor" type="System.Drawing.Color, System.Drawing">
-    <value>YellowGreen</value>
-  </data>
-
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -521,12 +508,6 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>DigaNaoAoMito</value>
-  </data>
-  <data name="&gt;&gt;rectangleShape1.Name" xml:space="preserve">
-    <value>rectangleShape1</value>
-  </data>
-  <data name="&gt;&gt;rectangleShape1.Type" xml:space="preserve">
-    <value>Microsoft.VisualBasic.PowerPacks.RectangleShape, Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frm_ConfirmaDecrypt</value>

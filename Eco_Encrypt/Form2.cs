@@ -20,7 +20,7 @@ namespace Eco_Encrypt
         private void btEntrar_Click(object sender, EventArgs e)
         {
             Decrifrar CifrasLog = new Decrifrar();
-            CifrasLog.EncontrarArquivos();
+            CifrasLog.EncontrarArquivos(TxbCredencial.Text,TxbData.Text);
         }
     }
 }

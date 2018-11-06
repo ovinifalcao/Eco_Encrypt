@@ -208,6 +208,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.picLogo);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.LerOForm);
             this.PanelEncrypt.ResumeLayout(false);

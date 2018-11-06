@@ -90,7 +90,7 @@ namespace Eco_Encrypt
 
 
             //Enquanto a quantidade total de numeros presentes no Vetor Alfabeto não estiver alocado em Beta continue testando posições randomicas para as caracteres
-            while (TrocaContador != 63)
+            while (TrocaContador != 64)
             {
                 numeradorRd = rdTrocador.Next(0, 63);
                 if (String.IsNullOrEmpty(StrBetaTradicional[numeradorRd]))
@@ -116,7 +116,7 @@ namespace Eco_Encrypt
             FileStream FileAlfabeto = File.Create(CaixaDeSalvar.FileName);
             using (StreamWriter EscreverArquivo = new StreamWriter(FileAlfabeto))
             { 
-                for (int i = 0; i < 63; i++)
+                for (int i = 0; i < 64; i++)
                 {
                     EscreverArquivo.Write(StrBetaTradicional[i]);
                 }
