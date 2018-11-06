@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace Eco_Encrypt
 {
@@ -20,6 +21,10 @@ namespace Eco_Encrypt
         {
             CredFication = credFication;
             DateFication = dateFication;
+        }
+
+        public Decrifrar()
+        {
         }
 
         public void EncontrarArquivos()
@@ -106,9 +111,9 @@ namespace Eco_Encrypt
                 x = 0;
                 y = 0;
 
-                SegundoPasso(TranscricaoAlfabetos);
             }
 
+            SegundoPasso(TranscricaoAlfabetos);
         }
 
         public void SegundoPasso(int[,] TrascricaoDoPrimeiroPasso)
@@ -116,8 +121,8 @@ namespace Eco_Encrypt
             string ValoresLinhaTransc=null;
             for (int i = 0; i < (TrascricaoDoPrimeiroPasso.Length / 2); i++)
             {
-                ValoresLinhaTransc = TrascricaoDoPrimeiroPasso[0, i].ToString();
-                ValoresLinhaTransc = TrascricaoDoPrimeiroPasso[1, i].ToString();
+                ValoresLinhaTransc = ValoresLinhaTransc + TrascricaoDoPrimeiroPasso[0, i].ToString();
+                ValoresLinhaTransc = ValoresLinhaTransc + TrascricaoDoPrimeiroPasso[1, i].ToString();
             }
 
             TerceiroPasso(ValoresLinhaTransc);
@@ -131,7 +136,7 @@ namespace Eco_Encrypt
 
             int[,] TextoPreTranscrit = new int[2, (LinhaDeTextos.Length / 2)];
             int RazaoDivisora = Math.Abs((CredFication.Length / 2));
-            int QtdLoops = Math.Abs((((LinhaDeTextos.Length) / 2) / RazaoDivisora)/2);
+            int QtdLoops = Math.Abs((((LinhaDeTextos.Length) / 2) / RazaoDivisora));
             int ContadoraDePassagemX = 0, ContadoraDePassagemY =0, PassadorSplit = 0;
 
             for (int i = 0; i < QtdLoops; i++)
@@ -139,14 +144,14 @@ namespace Eco_Encrypt
 
                 for (int j = 0; j < RazaoDivisora; j++)
                 {
-                    TextoPreTranscrit[0, ContadoraDePassagemX] = SplitTranscrit[PassadorSplit];
+                    TextoPreTranscrit[0, ContadoraDePassagemX] = int.Parse(SplitTranscrit[PassadorSplit].ToString());
                     ContadoraDePassagemX++;
                     PassadorSplit++;
                 }
 
                 for (int j = 0; j < RazaoDivisora; j++)
                 {
-                    TextoPreTranscrit[0, ContadoraDePassagemY] = SplitTranscrit[PassadorSplit];
+                    TextoPreTranscrit[1, ContadoraDePassagemY] = int.Parse(SplitTranscrit[PassadorSplit].ToString());
                     ContadoraDePassagemY++;
                     PassadorSplit++;
                 }
@@ -168,6 +173,28 @@ namespace Eco_Encrypt
             }
 
             DesconvertidaMesg = MensagemFinal;
+
+                        var desktop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
+            SaveFileDialog CaixaDeSalvar = new SaveFileDialog
+            {
+                Title = "Mensagem Pronta, escolha onde Salvar",
+                Filter = "Text File|.txt",
+                FilterIndex = 0,
+                FileName = "final",
+                DefaultExt = ".txt",
+                InitialDirectory = desktop,
+                RestoreDirectory = true
+            };
+            DialogResult CaixaSalvarResultado = CaixaDeSalvar.ShowDialog();
+
+            using (StreamWriter TextoFinal = new StreamWriter(CaixaDeSalvar.FileName))
+            {
+                TextoFinal.WriteLine(DesconvertidaMesg);
+                TextoFinal.Close();
+                Process.Start(CaixaDeSalvar.FileName);
+            }
+
+            GC.Collect();
         }
 
     }

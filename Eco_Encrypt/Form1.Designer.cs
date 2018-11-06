@@ -234,10 +234,10 @@
         private System.Windows.Forms.MaskedTextBox TxbData;
         private System.Windows.Forms.Button btEnviar;
         private System.Windows.Forms.PictureBox picMensagem;
-        private System.Windows.Forms.TextBox TxbMensagem;
         private System.Windows.Forms.PictureBox picLogo2;
         private System.Windows.Forms.Button btnDecifrar;
         private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.TextBox TxbMensagem;
     }
 }
 

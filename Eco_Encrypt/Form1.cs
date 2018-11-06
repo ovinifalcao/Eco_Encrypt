@@ -193,7 +193,6 @@ namespace Eco_Encrypt
         {
             EstadoRetorno();
         }
+
     }
-
-
 }

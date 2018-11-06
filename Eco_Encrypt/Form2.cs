@@ -19,8 +19,17 @@ namespace Eco_Encrypt
 
         private void btEntrar_Click(object sender, EventArgs e)
         {
-            Decrifrar CifrasLog = new Decrifrar(TxbCredencial.Text, TxbData.Text);
-            CifrasLog.EncontrarArquivos();
+            try
+            {
+                Decrifrar CifrasLog = new Decrifrar(TxbCredencial.Text, TxbData.Text);
+                CifrasLog.EncontrarArquivos();
+
+                this.Close();
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.ToString(), "Erro Inesperado na Decifragem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
     }
 }
