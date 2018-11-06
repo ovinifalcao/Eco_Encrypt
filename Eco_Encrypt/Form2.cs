@@ -19,8 +19,8 @@ namespace Eco_Encrypt
 
         private void btEntrar_Click(object sender, EventArgs e)
         {
-            Decrifrar CifrasLog = new Decrifrar();
-            CifrasLog.EncontrarArquivos(TxbCredencial.Text,TxbData.Text);
+            Decrifrar CifrasLog = new Decrifrar(TxbCredencial.Text, TxbData.Text);
+            CifrasLog.EncontrarArquivos();
         }
     }
 }

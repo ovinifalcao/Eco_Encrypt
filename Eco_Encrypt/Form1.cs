@@ -92,7 +92,7 @@ namespace Eco_Encrypt
             //Enquanto a quantidade total de numeros presentes no Vetor Alfabeto não estiver alocado em Beta continue testando posições randomicas para as caracteres
             while (TrocaContador != 64)
             {
-                numeradorRd = rdTrocador.Next(0, 63);
+                numeradorRd = rdTrocador.Next(0, 64);
                 if (String.IsNullOrEmpty(StrBetaTradicional[numeradorRd]))
                 {
                     StrBetaTradicional[numeradorRd] = StrAlfaTradicional[TrocaContador];
