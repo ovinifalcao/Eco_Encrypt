@@ -9,11 +9,14 @@ namespace Eco_Encrypt
     {
         string[,] AlfabetoMatriz = new string[8, 8];
 
+        //CONSTRUTOR DO FORM
         public Form1()
         {
             InitializeComponent();
         }
 
+
+        //AÇÕES DE BOTÕES
         private void LerOForm(object sender, EventArgs e)
         {
             TxbData.Text = DateTime.Today.ToShortDateString();
@@ -43,6 +46,29 @@ namespace Eco_Encrypt
 
         }
 
+        private void btEnviar_Click(object sender, EventArgs e)
+        {
+            Encripitacao EncriptaTexto = new Encripitacao(TxbCredencial.Text.ToLower(), AlfabetoMatriz);
+            EncriptaTexto.VerificarOTamanho(RemoverEspacos());
+            MensCriptografada(EncriptaTexto.Pass);
+        }
+
+        private void btnDecifrar_Click(object sender, EventArgs e)
+        {
+            frm_ConfirmaDecrypt Confirmacao = new frm_ConfirmaDecrypt();
+            Confirmacao.Show();
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            EstadoRetorno();
+        }
+
+
+
+        //Métodos Implementados para efetividade das transcrições
+
+            //MUNDAÇA DE ESTADO DO PANEL
         public void EstadoOpening()
         {
             TxbMensagem.Visible = false;
@@ -77,10 +103,12 @@ namespace Eco_Encrypt
             btEntrar.Visible = true;
         }
 
+
+            //MÉTODOS COM AÇÕES SOBRE O TEXTO
         public void GerarAlfabetoAleatorio()
         {
             //Vetores que permitem passar do alfabeto tradicional para uma versão randomica gerada
-            string[] StrAlfaTradicional = new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "ç", "ã", "õ", "+", "-", "*", "é", "?", "!", "=", "_", "@", "#", ";", ",", " ", ".", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "<", ">", "/", ":", "(", ")", "[", "]", "{", "}", "ú","í" };
+            string[] StrAlfaTradicional = new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "ç", "ã", "õ", "+", "-", "*", "é", "?", "!", "=", "_", "@", "#", ";", ",", " ", ".", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "<", ">", "/", ":", "(", ")", "[", "]", "ú", "í", "ê" };
             string[] StrBetaTradicional = new string[64];
 
             //TrocaContador é o contador de letras que estão sendo substituidas
@@ -115,12 +143,12 @@ namespace Eco_Encrypt
 
             FileStream FileAlfabeto = File.Create(CaixaDeSalvar.FileName);
             using (StreamWriter EscreverArquivo = new StreamWriter(FileAlfabeto))
-            { 
+            {
                 for (int i = 0; i < 64; i++)
                 {
                     EscreverArquivo.Write(StrBetaTradicional[i]);
                 }
-            EscreverArquivo.Close();
+                EscreverArquivo.Close();
             }
 
             GerarVetorDoAlfabeto(StrBetaTradicional);
@@ -139,13 +167,6 @@ namespace Eco_Encrypt
 
                 }
             }
-        }
-
-        private void btEnviar_Click(object sender, EventArgs e)
-        {
-            Encripitacao EncriptaTexto = new Encripitacao(TxbCredencial.Text, AlfabetoMatriz);
-            EncriptaTexto.VerificarOTamanho(RemoverEspacos());
-            MensCriptografada(EncriptaTexto.Pass);
         }
 
         public void MensCriptografada(string Mensagem)
@@ -182,17 +203,5 @@ namespace Eco_Encrypt
             return texto;
 
         }
-
-        private void btnDecifrar_Click(object sender, EventArgs e)
-        {
-            frm_ConfirmaDecrypt Confirmacao = new frm_ConfirmaDecrypt();
-            Confirmacao.Show();
-        }
-
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-            EstadoRetorno();
-        }
-
     }
 }

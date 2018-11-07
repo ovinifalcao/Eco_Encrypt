@@ -19,38 +19,47 @@ namespace Eco_Encrypt
         public void PrimeiroPasso(string TextoComum)
         {
             //AQUI CADA LETRA RECEBE SEU EQUIVALENTE MATRICIAL NO NOVO ALFABETO
-
-            char[] CharPorLetra;
-            CharPorLetra = TextoComum.ToCharArray();
-
+            char[] CharPorLetra = null;
             int ContadorDeChar = 0, x = 0, y = 0;
-            int[,] TranscricaoAlfabetos = new int[2, CharPorLetra.Length];
-
-            foreach (char ch in CharPorLetra)
+            try
             {
+                CharPorLetra = TextoComum.ToCharArray();
+                int[,] TranscricaoAlfabetos = new int[2, CharPorLetra.Length];
 
-                while (CharPorLetra[ContadorDeChar].ToString() != Alfabeto[x, y])
+                foreach (char ch in CharPorLetra)
                 {
-                    if (y == 7)
+
+                    while (CharPorLetra[ContadorDeChar].ToString() != Alfabeto[x, y])
                     {
-                        x++;
-                        y = 0;
+
+                        if (y == 7)
+                        {
+                            x++;
+                            y = 0;
+                        }
+                        else
+                        {
+                            y++;
+                        }
                     }
-                    else
-                    {
-                        y++;
-                    }
+
+                    TranscricaoAlfabetos[0, ContadorDeChar] = x;
+                    TranscricaoAlfabetos[1, ContadorDeChar] = y;
+
+                    ContadorDeChar++;
+                    x = 0;
+                    y = 0;
                 }
 
-                TranscricaoAlfabetos[0, ContadorDeChar] = x;
-                TranscricaoAlfabetos[1, ContadorDeChar] = y;
-
-                ContadorDeChar++;
-                x = 0;
-                y = 0;
+                SegundoPasso(TranscricaoAlfabetos);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("O caracter " + CharPorLetra[ContadorDeChar].ToString() + " não consta na referência padrão do Alfabeto Base, Substitua por outro caractere válido. " + ex.ToString(), "Erro no limite do Alfabeto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Form1 AcessoFrmUm = new Form1();
+                AcessoFrmUm.EstadoRetorno();
             }
 
-            SegundoPasso(TranscricaoAlfabetos);
         }
 
         public void VerificarOTamanho(string TextoComum)
