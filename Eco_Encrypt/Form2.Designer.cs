@@ -32,7 +32,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.TxbData = new System.Windows.Forms.MaskedTextBox();
             this.btEntrar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtFechar = new System.Windows.Forms.Button();
             this.TxbCredencial = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -63,15 +63,15 @@
             this.btEntrar.UseVisualStyleBackColor = false;
             this.btEntrar.Click += new System.EventHandler(this.btEntrar_Click);
             // 
-            // button1
+            // BtFechar
             // 
-            this.button1.BackColor = System.Drawing.Color.YellowGreen;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.BtFechar.BackColor = System.Drawing.Color.YellowGreen;
+            this.BtFechar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.BtFechar, "BtFechar");
+            this.BtFechar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BtFechar.Name = "BtFechar";
+            this.BtFechar.UseVisualStyleBackColor = false;
+            this.BtFechar.Click += new System.EventHandler(this.button1_Click);
             // 
             // TxbCredencial
             // 
@@ -93,7 +93,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Controls.Add(this.TxbCredencial);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtFechar);
             this.Controls.Add(this.btEntrar);
             this.Controls.Add(this.TxbData);
             this.Controls.Add(this.pictureBox3);
@@ -110,7 +110,7 @@
 
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btEntrar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtFechar;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.MaskedTextBox TxbData;
         private System.Windows.Forms.TextBox TxbCredencial;

@@ -64,7 +64,9 @@
             // 
             // TxbMensagem
             // 
+            this.TxbMensagem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxbMensagem.Location = new System.Drawing.Point(12, 43);
+            this.TxbMensagem.MaxLength = 256;
             this.TxbMensagem.Multiline = true;
             this.TxbMensagem.Name = "TxbMensagem";
             this.TxbMensagem.Size = new System.Drawing.Size(360, 469);
@@ -207,6 +209,7 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.picLogo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -238,7 +241,7 @@
         private System.Windows.Forms.PictureBox picLogo2;
         private System.Windows.Forms.Button btnDecifrar;
         private System.Windows.Forms.Button btnVoltar;
-        private System.Windows.Forms.TextBox TxbMensagem;
+        public System.Windows.Forms.TextBox TxbMensagem;
     }
 }
 

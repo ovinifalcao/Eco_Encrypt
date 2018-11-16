@@ -1,92 +1,54 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using System.IO;
-using System.Diagnostics;
 
 namespace Eco_Encrypt
 {
-    class Decrifrar
+    /// <summary>
+    /// Classe contém os métodos que implementam a mecânica a fim de decifrar, ou desfazer os passos da criptografia préviamente implementada
+    /// </summary>
+    class Decifrar
     {
 
         public string CaminhoPasta { get; set; }
-        private string AlfabetoTranscricao;
-        private string MensagemCrypto;
-        private string[,] AFBtranscricao = new string[8,8];
+        public string[,] AFBtranscricao { private get; set; } = new string[8, 8];
         private string CredFication;
         private string DateFication;
         public string DesconvertidaMesg { get; private set; }
+        private int[,] TranscricaoAlfabetos;
 
-        public Decrifrar(string credFication, string dateFication)
+
+        //CONSTRUTORES
+        /// <summary>
+        /// CONSTRUTOR ESPECIFICO CONSTROI A APLICAÇÃO QUE RODA DESDE O INICIO
+        /// </summary>
+        /// <param name="credFication">Crednecial disponível no TxtBox realtivo a mesma</param>
+        /// <param name="dateFication">Dara disponivel no txtbox relativo a essa informação</param>
+        public Decifrar(string credFication, string dateFication)
         {
             CredFication = credFication;
             DateFication = dateFication;
         }
 
-        public Decrifrar()
+        /// <summary>
+        /// CONSTRUTOR VAZIO SE APLICA A CASOS ESPECIFICOS
+        /// </summary>
+        public Decifrar()
         {
         }
 
-        public void EncontrarArquivos()
+
+        //PASSOS DA CRIPTOGRAFIA
+        /// <summary>
+        /// NESSE PASSO A APLICAÇÃO TENTA ENCONTRAR OS VALORES MATRICIAIS DE TODOS OS CARACTERES BASEADO NO ALFABETO FORNECIDO
+        /// </summary>
+        public void PrimeiroPasso(string TextoOriginal)
         {
 
-            DateFication = DateFication.Replace('/', '-');
-
-
-            var desktop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
-            FolderBrowserDialog CaixaDeSalvar = new FolderBrowserDialog
-            {
-                Description = "Selecione a pasta onde estão os recebidos",
-            };
-            DialogResult CaixaSalvarResultado = CaixaDeSalvar.ShowDialog();
-
-            CaminhoPasta = CaixaDeSalvar.SelectedPath;
-
-
-
-            //LEITURA DO ALFABETO DESENCRIPTADOR
-            StreamReader LeitorAFB = new StreamReader(CaminhoPasta + "/Alfabeto_" + DateFication + ".txt");
-            AlfabetoTranscricao = LeitorAFB.ReadLine();
-            LeitorAFB.Close();
-
-            //
-            StreamReader LeitorTexto = new StreamReader(CaminhoPasta +"/"+ CredFication + ".txt" );
-            MensagemCrypto = LeitorTexto.ReadLine();
-            LeitorTexto.Close();
-
-            SplitAFB();
-        }
-
-        public void SplitAFB()
-        {
-            char[] AFBDesencript;
-            AFBDesencript = AlfabetoTranscricao.ToCharArray();
-
-
-            int ContadorPassagem = 0;
-
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    AFBtranscricao[i, j] = AFBDesencript[ContadorPassagem].ToString();
-                    ContadorPassagem++;
-                }
-            }
-
-
-            PrimeiroPasso();
-        }
-
-        public void PrimeiroPasso()
-        {
-
-            //AQUI CADA LETRA RECEBE SEU EQUIVALENTE MATRICIAL NO ALFABETO FORNCIDO
             char[] CharPorLetra;
-            CharPorLetra =  MensagemCrypto.ToCharArray();
+
+            CharPorLetra = TextoOriginal.ToCharArray();
 
             int ContadorDeChar = 0, x = 0, y = 0;
-            int[,] TranscricaoAlfabetos = new int[2, CharPorLetra.Length];
+            TranscricaoAlfabetos = new int[2, CharPorLetra.Length];
 
             foreach (char ch in CharPorLetra)
             {
@@ -112,24 +74,29 @@ namespace Eco_Encrypt
                 y = 0;
 
             }
-
-            SegundoPasso(TranscricaoAlfabetos);
         }
 
-        public void SegundoPasso(int[,] TrascricaoDoPrimeiroPasso)
+        /// <summary>
+        /// TRANSCREVE OS VALORES MATRICIAIS ENCONTRADOS PARA FORMATO LINHA
+        /// </summary>
+        public string SegundoPasso()
         {
             string ValoresLinhaTransc=null;
-            for (int i = 0; i < (TrascricaoDoPrimeiroPasso.Length / 2); i++)
+            for (int i = 0; i < (TranscricaoAlfabetos.Length / 2); i++)
             {
-                ValoresLinhaTransc = ValoresLinhaTransc + TrascricaoDoPrimeiroPasso[0, i].ToString();
-                ValoresLinhaTransc = ValoresLinhaTransc + TrascricaoDoPrimeiroPasso[1, i].ToString();
+                ValoresLinhaTransc = ValoresLinhaTransc + TranscricaoAlfabetos[0, i].ToString();
+                ValoresLinhaTransc = ValoresLinhaTransc + TranscricaoAlfabetos[1, i].ToString();
             }
 
-            TerceiroPasso(ValoresLinhaTransc);
+            return ValoresLinhaTransc;
 
         }
 
-        public void TerceiroPasso(string LinhaDeTextos)
+        /// <summary>
+        /// Usa a a credencial para reler o limite considerado como Razão divisora no momento da Encripitação para retorar os valores as posições originais
+        /// </summary>
+        /// <param name="LinhaDeTextos">Texto que passou metodo da segunda etapa da desencriptação</param>
+        public int[,] TerceiroPasso(string LinhaDeTextos)
         {
             char[] SplitTranscrit;
             SplitTranscrit = LinhaDeTextos.ToCharArray();
@@ -158,10 +125,14 @@ namespace Eco_Encrypt
 
             }
 
-            PassaFinal(TextoPreTranscrit);
+            return TextoPreTranscrit;
 
         }
 
+        /// <summary>
+        /// Torna os valores tranpostos e covertidos para o alfabetoTradicional
+        /// </summary>
+        /// <param name="CodigoFinal"></param>
         public void PassaFinal(int[,] CodigoFinal)
         {
             //GRAÇAS A DEUS
@@ -174,25 +145,8 @@ namespace Eco_Encrypt
 
             DesconvertidaMesg = MensagemFinal;
 
-                        var desktop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
-            SaveFileDialog CaixaDeSalvar = new SaveFileDialog
-            {
-                Title = "Mensagem Pronta, escolha onde Salvar",
-                Filter = "Text File|.txt",
-                FilterIndex = 0,
-                FileName = "final",
-                DefaultExt = ".txt",
-                InitialDirectory = desktop,
-                RestoreDirectory = true
-            };
-            DialogResult CaixaSalvarResultado = CaixaDeSalvar.ShowDialog();
-
-            using (StreamWriter TextoFinal = new StreamWriter(CaixaDeSalvar.FileName))
-            {
-                TextoFinal.WriteLine(DesconvertidaMesg);
-                TextoFinal.Close();
-                Process.Start(CaixaDeSalvar.FileName);
-            }
+            UtilidadePublica Util = new UtilidadePublica();
+            Util.SalvarTxtStream(Util.DialogSalvarEm(UtilidadePublica.TipoDeSalvar.TxtDesencript),true, DesconvertidaMesg);
 
             GC.Collect();
         }

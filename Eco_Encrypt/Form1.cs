@@ -7,13 +7,11 @@ namespace Eco_Encrypt
 {
     public partial class Form1 : Form
     {
-
+        Encripitacao EncriptaTexto;
 
         //CONSTRUTOR DO FORM
-        public Form1()
-        {
-            InitializeComponent();
-        }
+        public Form1() => InitializeComponent();
+
 
         private void LerOForm(object sender, EventArgs e)
         {
@@ -21,9 +19,9 @@ namespace Eco_Encrypt
             EstadoOpening();
         }
 
+
+
         //AÇÕES DE BOTÕES
-
-
         private void BtEntrar_Click(object sender, EventArgs e)
         {
             try
@@ -35,24 +33,33 @@ namespace Eco_Encrypt
                     UtilidadePublica Util = new UtilidadePublica(TxbData.Text, TxbCredencial.Text);
                     EstadoEnviar();
                     Util.GerarAlfabetoAleatorio();
+                    Util.GerarVetorDoAlfabeto();
+                    Util.SalvarTxtStream(Util.DialogSalvarEm(UtilidadePublica.TipoDeSalvar.TxtAlfabeto), 64, true);
+                    EncriptaTexto = new Encripitacao(TxbCredencial.Text.ToLower(), Util.AlfabetoMatriz);
                 }
+                else throw new Exception("Os campos acima não podem estar vazios, ou estão com valores invalidos");
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Erro na validação de entrada", MessageBoxButtons.OK);
+                MessageBox.Show(ex.ToString(), "Erro na validação de entrada", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btEnviar_Click(object sender, EventArgs e)
         {
-            UtilidadePublica Util = new UtilidadePublica();
-            Encripitacao EncriptaTexto = new Encripitacao(TxbCredencial.Text.ToLower(), AlfabetoMatriz);
-            EncriptaTexto.VerificarOTamanho(Util.RemoverEspacos());
-            Util.MensCriptografada(EncriptaTexto.Pass);
+            UtilidadePublica Util = new UtilidadePublica(TxbData.Text, TxbCredencial.Text.ToLower());
+                    
+            EncriptaTexto.PrimeiroPasso(Util.RemoverEspacos(EncriptaTexto.VerificarOTamanho(TxbMensagem.Text.ToLower())));
+            EncriptaTexto.SegundoPasso();
+            EncriptaTexto.TerceiroPasso();
+
+            Util.SalvarTxtStream(Util.DialogSalvarEm(UtilidadePublica.TipoDeSalvar.TxtEncriptado), 1, true, EncriptaTexto.MensagemCriptografada());
+
         }
 
         private void btnDecifrar_Click(object sender, EventArgs e)
         {
+            TxbMensagem.Text = null;
             frm_ConfirmaDecrypt Confirmacao = new frm_ConfirmaDecrypt();
             Confirmacao.Show();
         }
@@ -62,7 +69,8 @@ namespace Eco_Encrypt
             EstadoRetorno();
         }
 
-       
+
+
         //MUNDAÇA DE ESTADO DO PANEL
         public void EstadoOpening()
         {
@@ -97,6 +105,7 @@ namespace Eco_Encrypt
             btnDecifrar.Visible = false;
             btEntrar.Visible = true;
         }
+
 
     }
 }

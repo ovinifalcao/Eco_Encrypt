@@ -349,31 +349,31 @@
   <data name="&gt;&gt;btEntrar.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="button1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="BtFechar.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="BtFechar.Location" type="System.Drawing.Point, System.Drawing">
     <value>228, 12</value>
   </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="BtFechar.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 21</value>
   </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+  <data name="BtFechar.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
+  <data name="BtFechar.Text" xml:space="preserve">
     <value>X</value>
   </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
+  <data name="&gt;&gt;BtFechar.Name" xml:space="preserve">
+    <value>BtFechar</value>
   </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+  <data name="&gt;&gt;BtFechar.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;BtFechar.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;BtFechar.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="TxbCredencial.Font" type="System.Drawing.Font, System.Drawing">

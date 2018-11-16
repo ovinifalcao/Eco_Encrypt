@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Eco_Encrypt
@@ -21,12 +20,18 @@ namespace Eco_Encrypt
         {
             try
             {
-                Decrifrar CifrasLog = new Decrifrar(TxbCredencial.Text, TxbData.Text);
-                CifrasLog.EncontrarArquivos();
-
+                UtilidadePublica CifrasLog = new UtilidadePublica(TxbData.Text, TxbCredencial.Text.ToLower());
+                Decifrar decifrar = new Decifrar(TxbCredencial.Text.ToLower(), TxbData.Text);
+                string CaminhoPath = CifrasLog.DialogBoxEncontraPasta();
                 this.Close();
+
+                decifrar.AFBtranscricao = CifrasLog.GerarVetorDoAlfabeto(CifrasLog.LeituraArquivosPMemoria(CaminhoPath, UtilidadePublica.Arquivo.Alfabeto));
+
+                decifrar.PrimeiroPasso(CifrasLog.LeituraArquivosPMemoria(CaminhoPath, UtilidadePublica.Arquivo.Texto));
+                decifrar.PassaFinal(decifrar.TerceiroPasso(decifrar.SegundoPasso()));
+
             }
-            catch (Exception ex) {
+            catch (Exception ex) { 
                 MessageBox.Show(ex.ToString(), "Erro Inesperado na Decifragem", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
