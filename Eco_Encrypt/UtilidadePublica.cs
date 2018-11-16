@@ -17,12 +17,23 @@ namespace Eco_Encrypt
 
 
         //CONSTRUTORES
+        /// <summary>
+        /// Contrutor da classe
+        /// </summary>
+        /// <param name="Date">Data do campo "Que dia é hoje", comtém definições diferentes no uso de encripitação de transcrição </param>
+        /// <param name="Credent">Credencial do campo "Credencial, comtém definições diferentes no uso de encripitação de transcrição"</param>
+        /// <remarks>
+        /// Geralmente utilizado para construir essa classe em contexos nos quais as informações dos parametros são utilitários.
+        /// </remarks>
         public UtilidadePublica(string Date, string Credent)
         {
             this.DataCriacaoAlfabeto = Date;
             this.CredencialDoCriador = Credent;
         }
 
+        /// <summary>
+        /// Construtor vazio
+        /// </summary>
         public UtilidadePublica()
         { }
 
@@ -58,7 +69,7 @@ namespace Eco_Encrypt
         }
 
         /// <summary>
-        /// Traansforma o Alfabeto Randomico Gerado em Um alfabeto Matricial
+        /// Transforma o Alfabeto Randomico Gerado em Um alfabeto Matricial
         /// </summary>
         public void GerarVetorDoAlfabeto()
         {
@@ -74,6 +85,16 @@ namespace Eco_Encrypt
             }
         }
 
+        /// <summary>
+        /// Transforma o Alfabeto Randomico Gerado em Um alfabeto Matricial
+        /// </summary>
+        /// <param name="AlfabetoEstrangeiro">Alfabeto string lihha a ser inserido na matriz</param>
+        /// <returns>
+        /// Retorno um alfabeto matricial
+        /// </returns>
+        /// <remarks>
+        /// Oferece uma alternativa ao método quando ele precisa ser usado em outras classes.
+        /// </remarks>
         public string[,] GerarVetorDoAlfabeto(string AlfabetoEstrangeiro)
         {
             int ContadorPassagem = 0;
@@ -242,7 +263,12 @@ namespace Eco_Encrypt
 
         }
         
-
+        /// <summary>
+        /// Faz o stream do texto, recebendo diretamente o texto que deve ser transmitido
+        /// </summary>
+        /// <param name="NameFile">Source do arquivo</param>
+        /// <param name="OpenAfter">Valor booelano que implica na abertura do arquivo gerado após conclusão</param>
+        /// <param name="ConteudoTexto">Texto a ser gravado no arquivo</param>
         public void SalvarTxtStream(string NameFile, bool OpenAfter, string ConteudoTexto)
         {
 
@@ -278,6 +304,9 @@ namespace Eco_Encrypt
             return CaixaDeSalvar.SelectedPath;
         }
 
+        /// <summary>
+        /// Conjunto ordenado de variáveis que representam qual tipo de arquivo está sedo usado.
+        /// </summary>
         public enum Arquivo
         {
             Alfabeto = 1,

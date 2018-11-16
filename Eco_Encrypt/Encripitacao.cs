@@ -8,6 +8,7 @@ namespace Eco_Encrypt
     /// </summary>
     class Encripitacao
     {
+
         private string Credencial {  get ; set; } 
         private string[,] Alfabeto { get; set; } 
         public string Pass { get; private set; }
